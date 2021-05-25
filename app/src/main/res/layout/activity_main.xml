@@ -19,39 +19,39 @@
         android:id="@+id/captureBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/cameraBtn"
+        android:background="@drawable/camerabtn"
         android:contentDescription="@string/cameraicon"
         android:scaleX="0.5"
         android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/cameraBtn" />
+        app:srcCompat="@drawable/camerabtn" />
 
     <ImageButton
         android:id="@+id/galleryBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/galleryBtn"
+        android:background="@drawable/gallerybtn"
         android:contentDescription="@string/galleryicon"
         android:scaleX="0.5"
         android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/captureBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/galleryBtn" />
+        app:srcCompat="@drawable/gallerybtn" />
 
     <ImageButton
         android:id="@+id/reverseBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/reverseBrn"
+        android:background="@drawable/reversebtn"
         android:contentDescription="@string/reverseicon"
         android:scaleX="0.5"
         android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/captureBtn"
-        app:srcCompat="@drawable/reverseBrn" />
+        app:srcCompat="@drawable/reversebtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
