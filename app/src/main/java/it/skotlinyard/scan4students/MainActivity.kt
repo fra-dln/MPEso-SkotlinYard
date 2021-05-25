@@ -1,8 +1,9 @@
 package it.skotlinyard.scan4students
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import it.skotlinyard.scan4students.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 

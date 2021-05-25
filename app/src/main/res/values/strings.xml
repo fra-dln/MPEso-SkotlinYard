@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Scan4Students</string>
+    <string name="snapbuttonname">snapButton</string>
 </resources>
