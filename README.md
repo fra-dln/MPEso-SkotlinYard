@@ -1,2 +1,2 @@
 # Scan4Students
-Mid-Term and Final Project for Mobile Programming AA 20/21
+Mid-Term Project for Mobile Programming Course, @ uniroma2 AA 20/21
