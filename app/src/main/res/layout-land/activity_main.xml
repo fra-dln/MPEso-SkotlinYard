@@ -11,7 +11,9 @@
     <androidx.camera.view.PreviewView
         android:id="@+id/viewFinder"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="16dp">
 
     </androidx.camera.view.PreviewView>
 
@@ -25,7 +27,7 @@
         android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cameraBtn" />
 
     <ImageButton
@@ -37,8 +39,8 @@
         android:scaleX="0.5"
         android:scaleY="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/captureBtn"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/captureBtn"
         app:srcCompat="@drawable/galleryBtn" />
 
     <ImageButton
@@ -49,9 +51,9 @@
         android:contentDescription="@string/reverseicon"
         android:scaleX="0.5"
         android:scaleY="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/captureBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/captureBtn"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/reverseBrn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
