@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Scan4Students</string>
+    <string name="snapbuttonname">snapButton</string>
+    <string name="cameraicon">cameraIcon</string>
+    <string name="galleryicon">galleryIcon</string>
+    <string name="reverseicon">reverseIcon</string>
 </resources>
