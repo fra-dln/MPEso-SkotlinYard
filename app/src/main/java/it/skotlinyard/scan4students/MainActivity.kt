@@ -20,12 +20,13 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 typealias LumaListener = (luma: Double) -> Unit
 
-//TODO GALLERY ACTIVITY AND LAYOUT, REVERSE CAMERA ACTION ON CLICK (BUTTON EXISTS binding.reverseBtn)
+//TODO GALLERY ACTIVITY AND LAYOUT
 
 class MainActivity : AppCompatActivity() {
 
     private var imageCapture: ImageCapture? = null
 
+    private lateinit var cameraFacing: String
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var binding: ActivityMainBinding
@@ -61,7 +62,9 @@ class MainActivity : AppCompatActivity() {
 
         // Request camera permissions
         if (allPermissionsGranted()) {
-            startCamera()
+            cameraFacing="BACK"
+            startCamera(CameraSelector.DEFAULT_BACK_CAMERA)
+
         } else {
             ActivityCompat.requestPermissions(
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
@@ -73,6 +76,17 @@ class MainActivity : AppCompatActivity() {
         outputDirectory = getOutputDirectory()
 
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+        binding.reverseBtn.setOnClickListener{
+            if (cameraFacing == "BACK"){
+                cameraFacing = "FRONT"
+                startCamera(CameraSelector.DEFAULT_FRONT_CAMERA)
+            }
+            else{
+                cameraFacing="BACK"
+                startCamera(CameraSelector.DEFAULT_BACK_CAMERA)
+            }
+        }
     }
 
     private fun takePhoto() {
@@ -106,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun startCamera() {
+    private fun startCamera(cameraSelector: CameraSelector) {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
 
@@ -130,9 +144,6 @@ class MainActivity : AppCompatActivity() {
                     })
                 }
 
-            // Select back camera as a default
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-
             try {
                 // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
@@ -149,7 +160,6 @@ class MainActivity : AppCompatActivity() {
 
         }, ContextCompat.getMainExecutor(this))
         imageCapture = ImageCapture.Builder().build()
-
     }
 
     override fun onRequestPermissionsResult(
@@ -157,7 +167,8 @@ class MainActivity : AppCompatActivity() {
         IntArray) {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
-                startCamera()
+                startCamera(CameraSelector.DEFAULT_BACK_CAMERA)
+                cameraFacing="BACK"
             } else {
                 Toast.makeText(this,
                     "Permissions not granted by the user.",
@@ -190,5 +201,6 @@ class MainActivity : AppCompatActivity() {
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+
     }
 }
