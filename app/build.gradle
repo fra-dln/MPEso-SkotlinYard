@@ -62,4 +62,6 @@ dependencies {
     // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
 
+    implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api-parent', version: '3.0.0', ext: 'pom'
+
 }
