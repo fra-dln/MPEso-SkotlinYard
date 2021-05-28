@@ -1,6 +1,7 @@
 package it.skotlinyard.scan4students
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -86,6 +87,10 @@ class MainActivity : AppCompatActivity() {
                 cameraFacing="BACK"
                 startCamera(CameraSelector.DEFAULT_BACK_CAMERA)
             }
+        }
+        binding.galleryBtn.setOnClickListener {
+            val intent = Intent(this, Gallery::class.java)
+            startActivity(intent)
         }
     }
 
