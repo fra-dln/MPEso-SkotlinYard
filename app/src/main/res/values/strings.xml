@@ -4,4 +4,5 @@
     <string name="cameraicon">cameraIcon</string>
     <string name="galleryicon">galleryIcon</string>
     <string name="reverseicon">reverseIcon</string>
+    <string name="startPath">/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App</string>
 </resources>

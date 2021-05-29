@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import it.skotlinyard.scan4students.databinding.ActivityImmageFullBinding
+import it.skotlinyard.scan4students.databinding.ActivityMainBinding
+import java.io.File
 import java.lang.Exception
 import java.util.jar.Manifest
 
@@ -17,6 +21,8 @@ class Gallery : AppCompatActivity() {
     private var imageRecycler:RecyclerView?=null
     private var progressBar:ProgressBar?=null
     private var allPictures:ArrayList<Image>?=null
+
+    private lateinit var binding: ActivityImmageFullBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +54,24 @@ class Gallery : AppCompatActivity() {
     private fun getAllImages(): ArrayList<Image>? {
         val images=ArrayList<Image>()
 
-        val allImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+
+        val gestore = FolderWorker()
+        val listOfFiles = gestore.getListFileFromDirectory("")
+        if (listOfFiles == null) {
+            Toast.makeText(baseContext, "CIAOOOOOOOOOOOOOOOO", Toast.LENGTH_SHORT).show()
+        }
+        if (listOfFiles != null) {
+            listOfFiles.forEach { i ->
+                Toast.makeText(baseContext, i.name, Toast.LENGTH_SHORT).show()
+                val image=Image()
+                image.imagePath=i.path
+                image.imageName=i.name
+                images.add(image)}
+        }
+
+        return images
+
+        /*val allImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
         val projection = arrayOf(MediaStore.Images.ImageColumns.DATA,MediaStore.Images.Media.DISPLAY_NAME)
 
@@ -66,8 +89,8 @@ class Gallery : AppCompatActivity() {
         }catch (e:Exception)
         {
             e.printStackTrace()
-        }
+        }*/
 
-        return images
+
     }
 }
