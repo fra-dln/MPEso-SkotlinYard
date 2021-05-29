@@ -13,7 +13,6 @@ import com.bumptech.glide.request.RequestOptions
 class ImageAdapter(private var context: Context, private var imagesList: ArrayList<Image>) :
     RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
-
     class ImageViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
         var image:ImageView?=null
         init {
