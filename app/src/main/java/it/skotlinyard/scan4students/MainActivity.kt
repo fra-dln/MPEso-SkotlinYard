@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.galleryBtn.setOnClickListener {
-            val intent = Intent(this, Gallery::class.java)
+            val intent = Intent(this, GalleryActivity::class.java)
             startActivity(intent)
         }
     }

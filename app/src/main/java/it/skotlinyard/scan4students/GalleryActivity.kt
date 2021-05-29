@@ -1,37 +1,39 @@
 package it.skotlinyard.scan4students
 
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.lang.Exception
-import java.util.jar.Manifest
+import it.skotlinyard.scan4students.databinding.ActivityGalleryBinding
 
-class Gallery : AppCompatActivity() {
+class GalleryActivity : AppCompatActivity() {
     private var imageRecycler:RecyclerView?=null
     private var progressBar:ProgressBar?=null
     private var allPictures:ArrayList<Image>?=null
 
+    private lateinit var binding: ActivityGalleryBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_gallery)
+        binding = ActivityGalleryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        imageRecycler=findViewById(R.id.image_recycler)
-        progressBar=findViewById(R.id.reycler_progressBar)
+        imageRecycler=binding.imageRecycler
+        progressBar=binding.reyclerProgressBar
 
         imageRecycler?.layoutManager=GridLayoutManager(this,3)
         imageRecycler?.setHasFixedSize(true)
 
         //Storage Permissions
-        if(ContextCompat.checkSelfPermission(this@Gallery, android.Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)
+        if(ContextCompat.checkSelfPermission(this@GalleryActivity, android.Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(this@Gallery, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),101)
+            ActivityCompat.requestPermissions(this@GalleryActivity, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),101)
         }
         allPictures= ArrayList()
         if(allPictures!!.isEmpty())
@@ -45,14 +47,14 @@ class Gallery : AppCompatActivity() {
         }
     }
 
-    private fun getAllImages(): ArrayList<Image>? {
+    private fun getAllImages(): ArrayList<Image> {
         val images=ArrayList<Image>()
 
         val allImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
         val projection = arrayOf(MediaStore.Images.ImageColumns.DATA,MediaStore.Images.Media.DISPLAY_NAME)
 
-        var cursor=this@Gallery.contentResolver.query(allImageUri,projection,null,null,null)
+        var cursor=this@GalleryActivity.contentResolver.query(allImageUri,projection,null,null,null)
 
         try{
             cursor!!.moveToFirst()

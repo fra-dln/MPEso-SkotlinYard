@@ -3,12 +3,11 @@ package it.skotlinyard.scan4students
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 
-class ImmageFullActivity : AppCompatActivity() {
+class ImageFullActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_immage_full)
+        setContentView(R.layout.activity_image_full)
 
         val imagePath= intent.getStringExtra("path")
         val imageName= intent.getStringExtra("name")

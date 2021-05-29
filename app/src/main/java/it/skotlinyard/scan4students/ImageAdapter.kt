@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.camera.camera2.interop.CaptureRequestOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -38,7 +37,7 @@ class ImageAdapter(private var context: Context, private var imagesList: ArrayLi
             .into(holder.image!!)
 
         holder.image?.setOnClickListener {
-            val intent= Intent(context, ImmageFullActivity::class.java)
+            val intent= Intent(context, ImageFullActivity::class.java)
             intent.putExtra("path",currentImage.imagePath)
             intent.putExtra("name",currentImage.imageName)
             context.startActivity(intent)
