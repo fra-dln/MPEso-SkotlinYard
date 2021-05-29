@@ -2,9 +2,9 @@ package it.skotlinyard.scan4students
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -50,11 +50,30 @@ class GalleryActivity : AppCompatActivity() {
     private fun getAllImages(): ArrayList<Image> {
         val images=ArrayList<Image>()
 
-        val allImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+
+        val gestore = FolderWorker()
+        val listOfFiles = gestore.getListFileFromDirectory("")
+        if (listOfFiles == null) {
+            Toast.makeText(baseContext, "CIAOOOOOOOOOOOOOOOO", Toast.LENGTH_SHORT).show()
+        }
+        if (listOfFiles != null) {
+            listOfFiles.forEach { i ->
+                Toast.makeText(baseContext, i.name, Toast.LENGTH_SHORT).show()
+                val image=Image()
+                image.imagePath=i.path
+                image.imageName=i.name
+                images.add(image)}
+        }
+
+        return images
+
+
+        //Sistema basato su URI per aprire la folder esterna del dispositivo
+        /*val allImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
         val projection = arrayOf(MediaStore.Images.ImageColumns.DATA,MediaStore.Images.Media.DISPLAY_NAME)
 
-        var cursor=this@GalleryActivity.contentResolver.query(allImageUri,projection,null,null,null)
+        var cursor=this@Gallery.contentResolver.query(allImageUri,projection,null,null,null)
 
         try{
             cursor!!.moveToFirst()
@@ -68,8 +87,6 @@ class GalleryActivity : AppCompatActivity() {
         }catch (e:Exception)
         {
             e.printStackTrace()
-        }
-
-        return images
+        }*/
     }
 }

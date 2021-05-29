@@ -1,4 +1,4 @@
-package it.skotlinyard.scan4students
+  package it.skotlinyard.scan4students
 
 import android.Manifest
 import android.content.Intent
