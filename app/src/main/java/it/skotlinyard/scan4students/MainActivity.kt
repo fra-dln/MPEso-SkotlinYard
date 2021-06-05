@@ -21,7 +21,6 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 typealias LumaListener = (luma: Double) -> Unit
 
-//TODO GALLERY ACTIVITY AND LAYOUT
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var binding: ActivityMainBinding
 
+    //ImageAnalyzer
     private class LuminosityAnalyzer(private val listener: LumaListener) : ImageAnalysis.Analyzer {
 
         private fun ByteBuffer.toByteArray(): ByteArray {
@@ -170,6 +170,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
         IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera(CameraSelector.DEFAULT_BACK_CAMERA)

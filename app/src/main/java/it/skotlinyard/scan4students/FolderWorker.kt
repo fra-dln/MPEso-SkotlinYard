@@ -7,6 +7,8 @@ Piccola nota sui Path:
 tutti i path richiesti come attributi sono fatti in modo che lo / iniziale deve essere sempre fatto mentre
 quello finale no (es: /ciao/comestai/moltobenegrazie)
 */
+
+// This class has been created for folder's managing, useless here, but important for the final project
 class FolderWorker {
     private val startPath = "/storage/emulated/0/Android/media/it.skotlinyard.scan4students/CameraX App"
 
