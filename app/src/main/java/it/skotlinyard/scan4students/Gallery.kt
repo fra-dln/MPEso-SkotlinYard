@@ -58,11 +58,9 @@ class Gallery : AppCompatActivity() {
         val gestore = FolderWorker()
         val listOfFiles = gestore.getListFileFromDirectory("")
         if (listOfFiles == null) {
-            Toast.makeText(baseContext, "CIAOOOOOOOOOOOOOOOO", Toast.LENGTH_SHORT).show()
         }
         if (listOfFiles != null) {
             listOfFiles.forEach { i ->
-                Toast.makeText(baseContext, i.name, Toast.LENGTH_SHORT).show()
                 val image=Image()
                 image.imagePath=i.path
                 image.imageName=i.name
